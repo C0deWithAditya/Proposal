@@ -7,6 +7,7 @@ class Proposal {
         {
             type: 'question',
             title: 'Hi Pinno Raani Meri❤️',
+            image: 'https://media.tenor.com/_biwL4sYf6MAAAAj/panda-hello.gif',
             text: 'I have something very important to ask you...',
             question: 'Will you be my Valentine?',
             yesText: 'Yes!',
@@ -83,7 +84,9 @@ class Proposal {
             div.id = `screen-${index}`
 
             if (screen.type === 'question') {
+                const imageHtml = screen.image ? `<img src="${screen.image}" class="question-img" alt="Cute Panda">` : ''
                 div.innerHTML = `
+          ${imageHtml}
           <h1>${screen.title}</h1>
           <p>${screen.text}</p>
           <p><strong>${screen.question}</strong></p>
