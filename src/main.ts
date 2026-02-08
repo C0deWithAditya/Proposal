@@ -84,7 +84,7 @@ class Proposal {
             div.id = `screen-${index}`
 
             if (screen.type === 'question') {
-                const imageHtml = screen.image ? `<img src="${screen.image}" class="question-img" alt="Cute Panda">` : ''
+                const imageHtml = screen.image ? `<img src="/panda-wave.gif" class="question-img" alt="Cute Panda">` : ''
                 div.innerHTML = `
           ${imageHtml}
           <h1>${screen.title}</h1>
