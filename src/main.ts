@@ -59,20 +59,32 @@ class Proposal {
         container.className = 'heart-bg'
         document.body.appendChild(container)
 
-        const emojis = ['❤️', '🌹', '🍃', '🌸', '✨']
+        const items = ['petal', '❤️', 'petal', '✨']
 
         setInterval(() => {
             const el = document.createElement('div')
             el.className = 'falling-element'
-            el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]
-            el.style.left = Math.random() * 100 + 'vw'
-            el.style.fontSize = Math.random() * 20 + 15 + 'px'
-            el.style.animationDuration = Math.random() * 5 + 3 + 's' // Slower fall
-            container.appendChild(el)
 
-            // Clean up
-            setTimeout(() => el.remove(), 8000)
-        }, 200)
+            const type = items[Math.floor(Math.random() * items.length)]
+
+            if (type === 'petal') {
+                const img = document.createElement('img')
+                img.src = '/petal.svg'
+                img.style.width = (Math.random() * 20 + 20) + 'px'
+                img.style.height = 'auto'
+                el.appendChild(img)
+            } else {
+                el.innerHTML = type
+                el.style.fontSize = Math.random() * 20 + 15 + 'px'
+            }
+
+            el.style.left = Math.random() * 100 + 'vw'
+            el.style.animationDuration = Math.random() * 5 + 4 + 's'
+            el.style.animationDelay = Math.random() * 2 + 's'
+
+            container.appendChild(el)
+            setTimeout(() => el.remove(), 9000)
+        }, 150)
     }
 
     private render() {
