@@ -440,9 +440,9 @@ button:active {
        Since we don't know the exact ratio, we'll try to center it and scale it down more.
     */
     .ring-overlay.animate {
-        /* Adjusted coordinates for typical mobile view */
-        top: 62% !important;
-        left: 45% !important;
+        /* Adjusted coordinates for typical mobile view: Moved right for ring finger */
+        top: 61% !important;
+        left: 58% !important;
         transform: translate(-50%, -50%) scale(0.35) rotate(-15deg) !important;
     }
 
