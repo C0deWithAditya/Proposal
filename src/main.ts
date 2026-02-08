@@ -153,7 +153,10 @@ class Proposal {
     }
 
     private attachEvents() {
-        this.app.onclick = (e) => {
+        this.app.onclick = (e: MouseEvent) => {
+            // Trigger burst effect on every click
+            this.createRoseBurst(e.clientX, e.clientY)
+
             const target = e.target as HTMLElement
 
             if (target.classList.contains('btn-yes')) {
@@ -257,6 +260,35 @@ class Proposal {
                 this.triggerConfetti()
             }, 4000)
         }, 3000)
+    }
+
+    private createRoseBurst(x: number, y: number) {
+        const count = 12; // Number of petals per burst
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('img');
+            el.src = '/petal.svg';
+            el.className = 'burst-particle';
+
+            // Center the burst source
+            // Note: CSS will position 'fixed', so we use client coordinates
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+
+            // Random angle and distance
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 100 + 60; // Spread radius
+
+            const tx = Math.cos(angle) * velocity + 'px';
+            const ty = Math.sin(angle) * velocity + 'px';
+            const rot = Math.random() * 360 + 'deg';
+
+            el.style.setProperty('--tx', tx);
+            el.style.setProperty('--ty', ty);
+            el.style.setProperty('--r', rot);
+
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1000); // Cleanup after animation
+        }
     }
 
     private triggerConfetti() {

@@ -176,6 +176,27 @@ button:active {
     }
 }
 
+@keyframes burst-out {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
+.burst-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 20px;
+    height: auto;
+    animation: burst-out 0.8s ease-out forwards;
+}
+
 /* Ring Screen specific */
 .canvas-container {
     width: 100%;
