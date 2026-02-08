@@ -58,16 +58,20 @@ class Proposal {
         container.className = 'heart-bg'
         document.body.appendChild(container)
 
+        const emojis = ['❤️', '🌹', '🍃', '🌸', '✨']
+
         setInterval(() => {
-            const heart = document.createElement('div')
-            heart.className = 'heart'
-            heart.innerHTML = '❤️'
-            heart.style.left = Math.random() * 100 + 'vw'
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px'
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's'
-            container.appendChild(heart)
-            setTimeout(() => heart.remove(), 5000)
-        }, 300)
+            const el = document.createElement('div')
+            el.className = 'falling-element'
+            el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]
+            el.style.left = Math.random() * 100 + 'vw'
+            el.style.fontSize = Math.random() * 20 + 15 + 'px'
+            el.style.animationDuration = Math.random() * 5 + 3 + 's' // Slower fall
+            container.appendChild(el)
+
+            // Clean up
+            setTimeout(() => el.remove(), 8000)
+        }, 200)
     }
 
     private render() {
