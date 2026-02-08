@@ -239,8 +239,8 @@ button:active {
 }
 
 .ring-overlay.animate {
-    top: 64.5%;
-    left: 45.3%;
+    top: 66.5%;
+    left: 42%;
     opacity: 1;
     transform: translate(-50%, -50%) scale(0.58) rotate(-15deg);
 }
