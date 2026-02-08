@@ -363,3 +363,95 @@ button:active {
         transform: translateY(0);
     }
 }
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .screen {
+        width: 95%;
+        padding: 25px 15px;
+        max-width: 100%;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust Gallery for Mobile */
+    .gallery-container {
+        height: 350px;
+    }
+
+    .polaroid {
+        padding: 8px 8px 30px 8px;
+        transform: rotate(calc(var(--i) * 5deg - 5deg)) translate(calc(var(--i) * 15px - 15px));
+    }
+
+    .polaroid img {
+        width: 140px;
+        height: 190px;
+    }
+
+    .polaroid .caption {
+        font-size: 1rem;
+    }
+
+    /* Tweaked float animation for tighter space */
+    @keyframes floatPhoto {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(calc(var(--i) * 5deg - 5deg)) translate(calc(var(--i) * 15px - 15px));
+        }
+
+        50% {
+            transform: translateY(-15px) rotate(calc(var(--i) * 2deg)) translate(calc(var(--i) * 10px - 10px));
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .canvas-container {
+        height: 300px;
+    }
+
+    /* Hand Image Logic:
+       On mobile, stick to 'contain' to ensure full hand is visible.
+       'cover' might crop fingers.
+       But we need to ensure the ring lands correctly.
+       If the ring is "not fitting", it implies alignment issues.
+       We'll slightly adjust position.
+    */
+    .hand-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* 
+       Ring adjustment:
+       If the hand scales down while maintaining aspect ratio,
+       the percentage based positioning should ideally work relative to the container IF the container matches expected aspect ratio.
+       Since we don't know the exact ratio, we'll try to center it and scale it down more.
+    */
+    .ring-overlay.animate {
+        /* Adjusted coordinates for typical mobile view */
+        top: 62% !important;
+        left: 45% !important;
+        transform: translate(-50%, -50%) scale(0.35) rotate(-15deg) !important;
+    }
+
+    .final-prompt p {
+        font-size: 1.2rem;
+    }
+
+    .btn-container button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
